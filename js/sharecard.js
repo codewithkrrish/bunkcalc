@@ -53,6 +53,6 @@ export function drawShareCard(canvas, overall, target) {
 
   ctx.fillStyle = "#9A9AA5";
   ctx.font = "600 28px Inter, system-ui, sans-serif";
-  ctx.fillText("bunkcalc.vercel.app  ·  Built by krrish", 96, 1000);
+  ctx.fillText("bunkcalc-app.vercel.app  ·  Built by krrish", 96, 1000);
   return true;
 }
