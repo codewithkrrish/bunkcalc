@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BunkCalc — Attendance Calculator: How Many Classes Can You Bunk?</title>
+<meta name="description" content="BunkCalc works out, per subject and overall, how many classes you can bunk and how many you must attend in a row to hit your attendance target. Free, private, and fully in your browser." />
+<link rel="canonical" href="https://bunkcalc.vercel.app/" />
+<meta name="theme-color" content="#0B0B0F" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="BunkCalc — Attendance Calculator" />
+<meta property="og:description" content="How many classes can you bunk — and how many must you attend in a row? Find out per subject and overall." />
+<meta property="og:url" content="https://bunkcalc.vercel.app/" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="BunkCalc — Attendance Calculator" />
+<meta name="twitter:description" content="How many classes can you bunk — and how many must you attend in a row? Find out per subject and overall." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="brand-mark" aria-hidden="true">B</span> BunkCalc</div>
+  <p class="tagline">Know exactly how many classes you can miss — before you miss one.</p>
+</header>
+
+<main class="wrap">
+  <section class="card overall" aria-labelledby="overall-heading">
+    <h1 id="overall-heading">Your attendance at a glance</h1>
+    <div class="overall-grid">
+      <div>
+        <div class="big-pct" id="overall-pct">—</div>
+        <p class="muted" id="overall-counts">—</p>
+        <div class="bar" aria-hidden="true"><div class="bar-fill" id="overall-bar" style="width:0%"></div></div>
+        <p id="summary" class="summary"></p>
+      </div>
+      <div class="overall-stats">
+        <div class="stat"><span class="stat-label">Can bunk</span><strong id="overall-bunk">—</strong><span class="stat-note">more classes</span></div>
+        <div class="stat"><span class="stat-label">Must attend</span><strong id="overall-must">—</strong><span class="stat-note">in a row</span></div>
+        <div class="stat"><span class="stat-label">Status</span><strong id="overall-status">—</strong><span class="stat-note">against target</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="target-heading">
+    <h2 id="target-heading">Attendance target</h2>
+    <p class="muted">Most colleges ask for 75%, but the right number is whatever your institution requires — check your handbook, not a meme.</p>
+    <div class="preset-row" id="preset-row" role="group" aria-label="Target presets"></div>
+    <label class="custom-target">Custom target (%)
+      <input id="target-input" type="number" min="0" max="100" step="1" inputmode="numeric" value="75" />
+    </label>
+  </section>
+
+  <section aria-labelledby="subjects-heading">
+    <div class="section-head">
+      <h2 id="subjects-heading">Subjects</h2>
+      <button id="add-subject" type="button" class="btn primary">Add subject</button>
+    </div>
+    <p class="muted hint">Edit a name, tap + / −, or type a number. Drag a card by its handle to reorder. Everything saves on this device automatically.</p>
+    <div id="subject-list" class="subject-list"></div>
+  </section>
+
+  <section class="card actions" aria-labelledby="tools-heading">
+    <h2 id="tools-heading">Save, share, print</h2>
+    <div class="btn-row">
+      <button id="export-btn" type="button" class="btn">Export JSON</button>
+      <label class="btn file-btn">Import JSON <input id="import-file" type="file" accept="application/json" hidden /></label>
+      <button id="reset-btn" type="button" class="btn danger">Reset</button>
+      <button id="download-card" type="button" class="btn primary">Download result card (PNG)</button>
+      <button id="print-btn" type="button" class="btn">Print</button>
+    </div>
+    <canvas id="share-canvas" width="1080" height="1080" aria-label="Shareable attendance result card"></canvas>
+  </section>
+
+  <section class="card note" aria-labelledby="limits-heading">
+    <h2 id="limits-heading">Honest limitations</h2>
+    <ul>
+      <li>Every future class counts equally here. A double-period, a lab, or a class your college weights differently will shift the real number.</li>
+      <li>Targets vary by institution, course, and sometimes by subject. BunkCalc does not know your college's rule — confirm it before acting on a bunk count.</li>
+      <li>Medical or duty-leave rules, condonation, and late attendance updates are not modelled. If your portal disagrees with your notes, trust the portal.</li>
+    </ul>
+  </section>
+</main>
+
+<footer class="footer">
+  <p>Built by krrish · <a href="https://github.com/codewithkrrish/bunkcalc">GitHub</a> · <a href="https://www.instagram.com/krrishx.ai">Instagram</a></p>
+  <p class="muted">Your attendance data is processed locally in your browser and never uploaded.</p>
+</footer>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
